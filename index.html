@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialCircle Analyzer - AI Network Clustering</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Force Graph Script -->
+    <script src="https://unpkg.com/force-graph"></script>
+</head>
+
+<body>
+    <div id="graph-container"></div>
+
+    <div class="glass-panel sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-network-wired"></i>
+            <h1>SocialCircle Analyzer</h1>
+        </div>
+        <p class="subtitle">K-Means Social Clustering</p>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="stat-value" id="stat-nodes">-</span>
+                <span class="stat-label">Users</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value" id="stat-links">-</span>
+                <span class="stat-label">Connections</span>
+            </div>
+        </div>
+
+        <div class="cluster-legend">
+            <h3>User Clusters</h3>
+            <div id="legend-items">
+                <!-- Legend items injected by JS -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="input-users">Users: <span id="users-val">300</span></label>
+                <input type="range" id="input-users" min="50" max="1000" step="50" value="300">
+            </div>
+            <div class="control-group">
+                <label for="input-clusters">Clusters: <span id="clusters-val">4</span></label>
+                <input type="range" id="input-clusters" min="2" max="8" step="1" value="4">
+            </div>
+            <button id="btn-recluster" class="primary-btn">
+                <i class="fa-solid fa-rotate"></i> Re-Cluster Data
+            </button>
+        </div>
+    </div>
+
+    <!-- Node Detail Panel -->
+    <div id="node-panel" class="glass-panel node-panel hidden">
+        <button id="close-panel" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="node-header">
+            <div class="avatar" id="node-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+                <h2 id="node-name">User Name</h2>
+                <span class="badge" id="node-persona">Persona</span>
+            </div>
+        </div>
+        <div class="node-metrics">
+            <div class="metric">
+                <i class="fa-solid fa-users"></i>
+                <div>
+                    <span class="metric-val" id="node-followers">0</span>
+                    <span class="metric-label">Followers</span>
+                </div>
+            </div>
+            <div class="metric">
+                <i class="fa-solid fa-pen"></i>
+                <div>
+                    <span class="metric-val" id="node-posts">0</span>
+                    <span class="metric-label">Posts/Day</span>
+                </div>
+            </div>
+            <div class="metric">
+                <i class="fa-solid fa-heart"></i>
+                <div>
+                    <span class="metric-val" id="node-likes">0</span>
+                    <span class="metric-label">Likes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
